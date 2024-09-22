@@ -1,0 +1,29 @@
+# django-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+    spec:
+      containers:
+        - name: django
+          image: django-app:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_HOST
+              value: "127.0.0.1"
+            - name: DATABASE_NAME
+              value: "testdb"
+            - name: DATABASE_USER
+              value: "azureuser"
+            - name: DATABASE_PASSWORD
+              value: "root"

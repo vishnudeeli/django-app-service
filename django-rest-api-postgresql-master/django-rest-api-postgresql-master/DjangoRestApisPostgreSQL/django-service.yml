@@ -1,0 +1,12 @@
+# django-service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-service
+spec:
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    app: django-app
+  type: LoadBalancer

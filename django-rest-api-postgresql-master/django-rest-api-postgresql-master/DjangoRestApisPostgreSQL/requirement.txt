@@ -1,0 +1,23 @@
+# Django framework
+Django
+
+# Database adapter (PostgreSQL as an example)
+psycopg2
+
+# Django REST Framework for building APIs
+djangorestframework
+
+# For handling environment variables
+python-decouple
+
+# For data validation and filtering
+django-filter
+
+# Additional packages for security and performance (optional)
+djangorestframework-simplejwt  # JWT authentication
+gunicorn  # Production server
+whitenoise  # Static files handling
+
+# Development tools (optional)
+django-debug-toolbar
+django-cors-headers

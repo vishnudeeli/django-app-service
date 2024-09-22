@@ -1,0 +1,31 @@
+version: '3.12'
+
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: azureuser
+      POSTGRES_PASSWORD: root
+
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 DjangoRestApisPostgreSQL.wsgi:application
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DEBUG: 'True'
+      DATABASE_NAME: testdb
+      DATABASE_USER: azureuser
+      DATABASE_PASSWORD: root
+      DATABASE_HOST: 127.0.0.1
+      DATABASE_PORT: 5432
+
+volumes:
+  postgres_data:
