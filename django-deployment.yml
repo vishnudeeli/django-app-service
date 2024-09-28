@@ -20,7 +20,7 @@ spec:
             - containerPort: 8000
           env:
             - name: DATABASE_HOST
-              value: "127.0.0.1"
+              value: "postgres-service"
             - name: DATABASE_NAME
               value: "testdb"
             - name: DATABASE_USER

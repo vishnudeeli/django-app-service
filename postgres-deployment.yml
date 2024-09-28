@@ -1,4 +1,3 @@
-# postgres-deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -25,3 +24,10 @@ spec:
               value: "root"
           ports:
             - containerPort: 5432
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-storage
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc
